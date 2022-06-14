@@ -1,0 +1,708 @@
+header {
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: 'MS Gothic';
+    border:none;
+}
+/* Style the tab */
+
+
+.tab {
+    overflow: hidden;
+    background-color: black;
+}
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+        background-color: black;
+        float: left;
+        border-block:double;
+        border-color: crimson;
+        outline: none;
+        cursor: pointer;
+        padding: 20px 30px;
+        transition: 0.3s;
+        width:10%;
+        height:10%;
+    }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: crimson;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            border-color:indianred;
+            background-color: indianred;
+        }
+
+/* Style the tab content */
+.tabcontent {
+    overflow:auto;
+    display: none;
+    height: 100%;
+    width: 100%;
+    padding: 6px 12px;
+    background-color: indianred;
+    color:white;
+    font-family: 'MS Gothic';
+}
+button.tablinks {
+    color:white;
+    font-size: medium;
+    font-family: 'MS Gothic';
+}
+/* tab content end */
+
+html,body{
+    height:100%;
+    background-color:indianred;
+}
+#foot {
+    font-family:'MS Gothic';
+    position:absolute;
+    text-align:center;
+    background-color:black;
+    color:white;
+    width:100%;
+    height:15%;
+}
+#showSQL:hover{
+    background-color:crimson;
+    border:solid;
+    border-color:white;
+    color:white;
+}
+
+#showSQL{
+    background-color: black;
+    color:white;
+    border:solid;
+    border-color: crimson;
+}
+
+input#pk_id.form-control{
+    background-color:black;
+    color:white;
+    border:none;
+    position:absolute;
+    width: 19.15%;
+}
+input#f_id.form-control {
+    background-color: black;
+    color: white;
+    border: none;
+    position: absolute;
+    width: 19.15%;
+}
+input#pk_idC.form-control {
+    background-color: black;
+    color: white;
+    border: none;
+    position: absolute;
+    width: 19.15%;
+}
+#searchB {
+    color:white;
+    background-color: black;
+    border: outset;
+    border-color: white;
+    font-family: Impact;
+    position: absolute;
+    right:75%;
+    top:-2px;
+    width: 100px;
+}
+
+#searchB:hover {
+        background-color: steelblue;
+}
+
+button.btn.bttn-primary {
+    color:black;
+    background-color: hotpink;
+    border: outset;
+    border-color: black;
+    font-family: Impact;
+}
+
+button.btn.bttn-primary:hover {
+    background-color: lawngreen;
+}
+thead {
+    position: relative;
+    color:white;
+    background-color: black;
+    border: solid;
+    border-color: crimson;
+}
+
+th {
+    position:relative;
+    color:white;
+    background-color: black;
+    border: solid;
+    border-color: crimson;
+}
+
+input#a1.form-control:before {
+    content: 'D: ';
+    margin-right: .6em;
+    color: #9d9d9d;
+}
+
+input#c1.form-control:before {
+    content: 'A: ';
+    margin-right: .6em;
+    color: #9d9d9d;
+}
+#thead-passenger{
+    border:none;
+    position: unset;
+    background:none;
+}
+#tr-passenger{
+    border:none;
+    position:unset;
+    background:none;
+}
+#idNO {
+    background:none;
+    border:none;    
+    color:black;
+    position:absolute;
+    left:0%;
+}
+#flightID {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    left: 20%;
+}
+#Fname {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 160px;
+    left: 0%;
+}
+#Lname {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 160px;
+    left: 20%;
+}
+#seatNO {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 480px;
+    left: 0%;
+}
+#phoneNO {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 320px;
+    left: 0%;
+}
+#email {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 320px;
+    left: 20%;
+}
+#pass {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 480px;
+    left: 20%;
+}
+#time {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 640px;
+    left: 20%;
+}
+#gate {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 640px;
+    left: 0%;
+}
+#idNOout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 0%;
+}
+
+#flightIDout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 20%;
+}
+
+#Fnameout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 220px;
+    left: 0%;
+}
+
+#Lnameout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 220px;
+    left: 20%;
+}
+
+#seatNOout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 540px;
+    left: 0%;
+}
+
+#phoneNOout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 380px;
+    left: 0%;
+}
+
+#emailout {
+    width:15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 380px;
+    left: 20%;
+}
+#passout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 540px;
+    left: 20%;
+}
+#timeout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 700px;
+    left: 20%;
+}
+#gateout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 700px;
+    left: 0%;
+}
+#img {
+    width: 55%;
+    border:none;
+    position:relative;
+    left: 25%;
+    top: 5px;
+}
+#img1{
+    width:100%;
+}
+#aa {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    left: 0%;
+    font-size: large;
+}
+
+#bb {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    left: 20%;
+    font-size: large;
+}
+
+#cc {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 160px;
+    left: 0%;
+    font-size: large;
+}
+
+#dd {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 160px;
+    left: 20%;
+    font-size: large;
+}
+
+#ee {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 480px;
+    left: 0%;
+    font-size: large;
+}
+
+#ff {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 320px;
+    left: 0%;
+    font-size: large;
+}
+
+#gg {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 320px;
+    left: 20%;
+    font-size: large;
+}
+
+#hh {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 480px;
+    left: 20%;
+    font-size: large;
+}
+
+#ii {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 160px;
+    left: 70%;
+    font-size: large;
+}
+
+#jj {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 320px;
+    left: 70%;
+    font-size: large;
+}
+
+#kk {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 480px;
+    left: 70%;
+    font-size: large;
+}
+
+#ll {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    left: 50%;
+    font-size: large;
+}
+#mm {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 160px;
+    left: 50%;
+    font-size: large;
+}
+#nn {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 320px;
+    left: 50%;
+    font-size: large;
+}
+#oo {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    top: 480px;
+    left: 50%;
+    font-size: large;
+}
+#pp {
+    background: none;
+    border: none;
+    color: black;
+    position: absolute;
+    left: 70%;
+    font-size: large;
+}
+#aaout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 0%;
+}
+
+#bbout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 20%;
+}
+
+#ccout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 220px;
+    left: 0%;
+}
+
+#ddout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 220px;
+    left: 20%;
+}
+
+#eeout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 540px;
+    left: 0%;
+}
+
+#ffout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 380px;
+    left: 0%;
+}
+
+#ggout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 380px;
+    left: 20%;
+}
+
+#hhout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 540px;
+    left: 20%;
+}
+
+#iiout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 220px;
+    left: 70%;
+}
+
+#jjout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 380px;
+    left: 70%;
+}
+#kkout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 540px;
+    left: 70%;
+}
+#llout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+}
+#mmout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 220px;
+    left: 50%;
+}
+#nnout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 380px;
+    left: 50%;
+}
+#ooout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 540px;
+    left: 50%;
+}
+#ppout {
+    width: 15%;
+    background: black;
+    border: solid;
+    border-color: crimson;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 70%;
+}
+.form-control.modal-body {
+    color:white;
+    background-color: black;
+    height:20%;
+    border:solid;
+    border-color:crimson;
+}
+.modal-header {
+    border:none;
+    background-color:black;
+}
+.modal-footer {
+    border:none;
+    background-color: black;
+}
+.modal-body{
+    background-color:black;
+    border:none;
+    border-color:crimson;
+}
+.modal-content{
+    background-color:black;
+    border:solid;
+    border-color:crimson;
+}

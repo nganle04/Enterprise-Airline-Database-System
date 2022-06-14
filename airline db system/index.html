@@ -1,0 +1,430 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- style file -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Flight Management</title>
+</head>
+
+<body>
+    <!-- each of the tabs will hold a different part of the database-->
+    <header>
+        <div>
+            <h2>Target 3: Team 23</h2>
+            <p>This is a database representing flight management</p>
+        </div>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openTable(event, 'home_page')">-WELCOME-</button>
+            <button class="tablinks" onclick="openTable(event, 'Sflights')">-search flights-</button>
+            <button class="tablinks" onclick="openTable(event, 'flights'); selectFlight();">-all flights-</button>
+            <button class="tablinks" onclick="openTable(event, 'extras'); selectExtras();">-flights extras-</button>
+            <button class="tablinks" onclick="openTable(event, 'support'); selectSupport();">-plane support-</button>
+            <button class="tablinks" onclick="openTable(event, 'board')">-boarding information-</button>
+            <button class="tablinks" onclick="openTable(event, 'passenger')">-search passenger-</button>
+            <button class="tablinks" onclick="openTable(event, 'crew')">-search crew-</button>
+            <button class="tablinks" onclick="openTable(event, 'airports')">-airports-</button>
+            <button class="tablinks" onclick="openTable(event, 'planes')">-planes-</button>
+        </div>
+    </header>
+    <!-- HOME PAGE -->
+    <div id="home_page" class="tabcontent">
+        <h3>PROJECT INFORMATION</h3>
+        <p> Alexis Navarrete: dbs081 ----- Ngan Le: dbs058 ----- Khang Huyng: dbs047</p>
+        <p>Here is the information for our team, video demo, pdf, etc.</p>
+        <p>Demo video link:</p><p><a href="https://youtu.be/CEeO1MluRCU">link to video (right click and click open in new tab to stay on site)</a></p>
+        <p>ER model PDF:</p><p><a href="ERmodel_final_copy.pdf">Look at ER model (right click and click open in new tab to stay on site)</a></p>
+        <p>First ER model PDF (rough draft):</p><p><a href="ERmodel_rough_draft.pdf">Look at ER model (right click and click open in new tab to stay on site)</a></p>
+        <p>sumary PDF:</p><p><a href="team23.pdf">Look at our summary report (right click and click open in new tab to stay on site)</a></p>
+    </div>
+
+    <!-- PLANES PAGE -->
+    <div id="planes" class="tabcontent">
+        <h3>CURRENT PLANE MODELS</h3>
+        <p>Here you can find plane models to their respective plane code and add new plane models that are added to the market</p>
+        <!-- add buttons and functions to manipulate table and data -->
+        <div class="input-group mb-3" id="input-todo">
+            <input type="text" class="form-control" placeholder="plane id" id="kP" required>
+            <input type="text" class="form-control" placeholder="plane model" id="aP" required>
+            <input type="number" class="form-control" placeholder="total # seats" id="bP">
+            <div class="input-group-append">
+                <button class="btn bttn-primary" id="addData" type="button" onclick="insertPlanes()">Add</button>
+            </div>
+        </div>
+        <!-- end of add -->
+        <!-- display -->
+        <table class="table mt-5 text-center" id="data-list">
+            <thead>
+                <tr>
+                    <th>Plane ID</th>
+                    <th>Plane model</th>
+                    <th>total # of seats</th>
+                </tr>
+            </thead>
+            <tbody id="planes-table">
+            </tbody>
+        </table>
+        <!-- end of display -->
+    </div>
+
+    <!-- TAB FOR FLIGHTS SEARCH -->
+    <div id="Sflights" class="tabcontent">
+        <h3>Search for a flight by ID</h3>
+        <p>get all information about a flight</p>
+        <div class="input-group mb-3" id="input-todo">
+            <input type="number" class="form-control" placeholder="flight id #" id="f_id" min="100000" max="999999" required>
+            <div class="input-group-append">
+                <button id="searchB" class="btn bttn-primary" type="button" onclick="getFlight()">
+                    Search...
+                </button>
+                <table class="table mt-5 text-center" id="passenger-info">
+                    <thead id="thead-passenger">
+                        <tr id="tr-passenger">
+                            <th id="aa"><u>Flight ID:</u></th>
+                            <th id="dd"><u>departure date:</u></th>
+                            <th id="cc"><u>departure time:</u></th>
+                            <th id="gg"><u>arrival date:</u></th>
+                            <th id="ff"><u>arrival time:</u></th>
+                            <th id="ee"><u>from airport:</u></th>
+                            <th id="hh"><u>to ariport:</u></th>
+                            <th id="bb"><u>plane id:</u></th>
+                            <th id="ii"><u>food and beverages:</u></th>
+                            <th id="jj"><u>are movies available:</u></th>
+                            <th id="kk"><u>is wifi available:</u></th>
+                            <th id="ll"><u>plane support no:</u></th>
+                            <th id="mm"><u>refueling:</u></th>
+                            <th id="nn"><u>maintenance:</u></th>
+                            <th id="oo"><u>cleaning:</u></th>
+                            <th id="pp"><u>baggage:</u></th>
+                        </tr>
+                    </thead>
+                    <tbody id="display-flight">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB FOR PASSENGER SEARCH -->
+    <div id="passenger" class="tabcontent">
+        <h3>Search for a passenger by ID</h3>
+        <p>Must use their identificaiton number found in their boarding pass</p>
+        <div class="input-group mb-3" id="input-todo">
+            <input type="number" class="form-control" placeholder="Enter personal identification #" id="pk_id" min="10000000" max="99999999" required>
+            <div class="input-group-append">
+                <button id="searchB" class="btn bttn-primary" type="button" onclick="getPassenger()">
+                    Search...
+                </button>
+                <table class="table mt-5 text-center" id="passenger-info">
+                    <thead id="thead-passenger">
+                        <tr id="tr-passenger">
+                            <th id="idNO"><u>IDENTIFIACTION NO:</u></th>
+                            <th id="Fname"><u>FIRST NAME:</u></th>
+                            <th id="Lname"><u>LAST NAME:</u></th>
+                            <th id="phoneNO"><u>PHONE #:</u></th>
+                            <th id="email"><u>EMAIL:</u></th>
+                            <th id="flightID"><u>FLIGHT ID:</u></th>
+                            <th id="seatNO"><u>SEAT NO:</u></th>
+                            <th id="pass"><u>Boarding pass ID:</u></th>
+                            <th id="time"><u>Check in time:</u></th>
+                            <th id="gate"><u>Gate:</u></th>
+                        </tr>
+                    </thead>
+                    <tbody id="display-passenger">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB FOR CREW SEARCH -->
+    <div id="crew" class="tabcontent">
+        <h3>Search for a flight crew member by ID</h3>
+        <p>Must use their identificaiton number found in their boarding pass</p>
+        <div class="input-group mb-3" id="input-todo">
+            <input type="number" class="form-control" placeholder="Enter personal identification #" id="pk_idC" min="10000000" max="99999999" required>
+            <div class="input-group-append">
+                <button id="searchB" class="btn bttn-primary" type="button" onclick="getCrew()">
+                    Search...
+                </button>
+                <table class="table mt-5 text-center" id="crew-info">
+                    <thead id="thead-passenger">
+                        <tr id="tr-passenger">
+                            <th id="idNO"><u>IDENTIFIACTION NO:</u></th>
+                            <th id="Fname"><u>FIRST NAME:</u></th>
+                            <th id="Lname"><u>LAST NAME:</u></th>
+                            <th id="phoneNO"><u>PHONE #:</u></th>
+                            <th id="email"><u>EMAIL:</u></th>
+                            <th id="flightID"><u>FLIGHT ID:</u></th>
+                            <th id="seatNO"><u>Job Desc:</u></th>
+                            <th id="pass"><u>Boarding pass ID:</u></th>
+                            <th id="time"><u>Check in time:</u></th>
+                            <th id="gate"><u>Gate:</u></th>
+                        </tr>
+                    </thead>
+                    <tbody id="display-crew">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB TO MODIFY FLIGHTS -->
+    <div id="flights" class="tabcontent">
+        <h3>Modify/add flights</h3>
+        <p>can update a flights departure and arrival timestamp, plane id</p>
+        <!-- add buttons and functions to manipulate table and data -->
+        <div class="input-group mb-3" id="input-todo">
+            <input type="number" class="form-control" placeholder="flight id" id="k1" min="100000" max="999999" required>
+            <input type="date" class="form-control" id="a1">
+            <input type="time" class="form-control" id="b1">
+            <input type="date" class="form-control" id="c1">
+            <input type="time" class="form-control" id="d1">
+            <input type="text" class="form-control" placeholder="departure airport" id="e1">
+            <input type="text" class="form-control" placeholder="arrival airport" id="f1">
+            <input type="text" class="form-control" placeholder="plane id" id="g1">
+            <div class="input-group-append">
+                <button class="btn bttn-primary" id="addData" type="button" onclick="insertFlight()">Add</button>
+            </div>
+        </div>
+        <!-- end of add -->
+        <!-- display -->
+        <table class="table mt-5 text-center" id="data-list">
+            <thead>
+                <tr>
+                    <th>Flight ID</th>
+                    <th>Departure Date</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Date</th>
+                    <th>Arrival Time</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Plane ID</th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
+            <tbody id="flights-table">
+            </tbody>
+        </table>
+        <!-- end of display -->
+        <!-- add funciton to edit/delete -->
+        <div class="modal fade" id="edit-modal-flights" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit-flights-label">Edit flight</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <input type="date" class="form-control modal-body" id="edited-a1">
+                    <input type="time" class="form-control modal-body" id="edited-b1">
+                    <input type="date" class="form-control modal-body" id="edited-c1">
+                    <input type="time" class="form-control modal-body" id="edited-d1">
+                    <input type="text" class="form-control modal-body" id="edited-e1">
+                    <input type="text" class="form-control modal-body" id="edited-f1">
+                    <input type="text" class="form-control modal-body" id="edited-g1">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-edit-flights">COMMIT CHANGES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB TO OPEN FLIGHT EXTRAS -->
+    <div id="extras" class="tabcontent">
+        <h3>FLIGHT EXTRAS</h3>
+        <p>Here we can see and change what will be available during the flight </p>
+        <!-- display -->
+        <table class="table mt-5 text-center" id="data-list">
+            <thead>
+                <tr>
+                    <th>flight id</th>
+                    <th>food and beverages</th>
+                    <th>movies</th>
+                    <th>wifi</th>
+                    <th>EDIT</th>
+                </tr>
+            </thead>
+            <tbody id="extras-table">
+            </tbody>
+        </table>
+        <!-- end of display -->
+        <div class="modal fade" id="edit-modal-extras" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit-extras-label">Edit extras</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <select class="form-control modal-body" id="edited-aE">
+                        <option value="NONE PROVIDED">none</option>
+                        <option value="SNACKS AND WATER ONLY">snacks and water</option>
+                        <option value="BREAKFEST ONLY">breakfest</option>
+                        <option value="LUNCH ONLY">lunch</option>
+                        <option value="DINNER ONLY">dinner</option>
+                        <option value="BREAKFEST AND LUNCH">breakf and lunch</option>
+                        <option value="LUNCH AND DINNER">lunch & dinner</option>
+                        <option value="ALL">all</option>
+                    </select>
+                    <select class="form-control modal-body" id="edited-bE">
+                        <option value="NO">NO</option>
+                        <option value="YES">YES</option>
+                    </select>
+                    <select class="form-control modal-body" id="edited-cE">
+                        <option value="NO">NO</option>
+                        <option value="YES">YES</option>
+                    </select>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-edit-extras">COMMIT CHANGES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB TO OPEN PLANE SUPPORT MONITORING -->
+    <div id="support" class="tabcontent">
+        <h3>Modify support tickets</h3>
+        <p>modify support ticket for a plane </p>
+        <!-- display -->
+        <table class="table mt-5 text-center" id="data-list">
+            <thead>
+                <tr>
+                    <th>Suppoert NO</th>
+                    <th>plane_id</th>
+                    <th>flight_id</th>
+                    <th>fuel status</th>
+                    <th>maintenance</th>
+                    <th>cleaning</th>
+                    <th>baggae</th>
+                    <th>EDIT</th>
+                </tr>
+            </thead>
+            <tbody id="support-table">
+            </tbody>
+        </table>
+        <!-- end of display -->
+        <div class="modal fade" id="edit-modal-support" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit-support-label">Edit flight</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control modal-body" id="edited-aS">
+                    <select class="form-control modal-body" id="edited-bS">
+                        <option value="FUELED">fueled</option>
+                        <option value="NOT FUELED">not fueled</option>
+                    </select>
+                    <select class="form-control modal-body" id="edited-cS">
+                        <option value="NEEDS REGULAR INSPECTION">needs insp.</option>
+                        <option value="CLEAR TO GO">none</option>
+                        <option value="NEEDS ENGINE CHECK">engine maint.</option>
+                        <option value="NEEDS WING CHECK">wing maint.</option>
+                        <option value="NEEDS TIRE CHECK">tire maint.</option>
+                        <option value="NEEDS REPLACEMENT!!!">new plane needed</option>
+                        <option value="OTHER...">other</option>
+                    </select>
+                    <select class="form-control modal-body" id="edited-dS">
+                        <option value="CLEANED">clean</option>
+                        <option value="NOT CLEANED">needs cleaning</option>
+                    </select>
+                    <select class="form-control modal-body" id="edited-eS">
+                        <option value="LOADED">baggage loaded</option>
+                        <option value="NOT LOADED">baggage not loaded</option>
+                    </select>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-edit-support">COMMIT CHANGES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB FOR BOARD PASSES -->
+    <div id="board" class="tabcontent">
+        <h3>Search boarding information</h3>
+        <p>can see boarding information for each passenger and crew member</p>
+        <!-- display -->
+        <table class="table mt-5 text-center" id="data-list">
+            <thead>
+                <tr>
+                    <th>Board Pass NO</th>
+                    <th>Identification NO</th>
+                    <th>Flight ID</th>
+                    <th>Check in time</th>
+                    <th>Boarding Gate</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone #</th>
+                    <th>Email</th>
+                    <th>Seat NO or Job desc.</th>
+                </tr>
+            </thead>
+            <tbody id="board-table">
+            </tbody>
+        </table>
+        <!-- end of display -->
+    </div>
+
+    <!-- TAB FOR AIRPORTS -->
+    <div id="airports" class="tabcontent">
+        <h3>AIRPORTS LOCATION</h3>
+        <p>on this tab, one is able to see and look at the airport codes to see their location state and city</p>
+        <!-- display -->
+        <table class="table mt-5 text-center" id="data-list">
+            <thead>
+                <tr id="airport">
+                    <th id="AP">AIRPORT CODE</th>
+                    <th id="AP">NAME</th>
+                    <th id="AP">STATE</th>
+                    <th id="AP">CITY</th>
+                </tr>
+            </thead>
+            <tbody id="airport-table">
+            </tbody>
+        </table>
+        <!-- end of display -->
+    </div>
+
+    <footer id="foot">
+        <p></p>
+        <h5>Last ran query on web app:</h5>
+        <form>
+            <input type="button" id="showSQL" value="SHOW ME!!" onclick="getSQLT();" />
+        </form>
+
+    </footer>
+    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script id="set-anchor">
+        
+    </script>
+
+
+</body>
+
+</html>

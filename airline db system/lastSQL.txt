@@ -1,0 +1,2 @@
+BEGIN TRANSACTION;
+SELECT * FROM flights WHERE flight_id = $1;DELETE FROM flights WHERE flight_id = $1;DELETE FROM extras WHERE flight_id = $1;DELETE FROM support WHERE flight_id = $1;COMMIT;
